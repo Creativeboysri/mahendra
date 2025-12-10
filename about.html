@@ -113,53 +113,111 @@
         <div class="container">
             <h2 class="section-title center">Our Journey</h2>
 
-            <div class="timeline">
-                <!-- 2025 -->
-                <div class="timeline-item">
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-content">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=400&fit=crop"
-                            alt="Current projects 2025">
-                        <h3>Expanding Horizons</h3>
-                        <p>Launched our sustainable construction initiative and expanded operations to three new cities,
-                            completing over 50 major projects and earning industry recognition for environmental
-                            excellence.</p>
-                    </div>
+            <div class="sticky-timeline">
+                <!-- Sticky Years Navigation -->
+                <div class="timeline-years-nav">
+                    <div class="timeline-nav-item active" data-year="2025">2025</div>
+                    <div class="timeline-nav-item" data-year="2020">2020</div>
+                    <div class="timeline-nav-item" data-year="2015">2015</div>
+                    <div class="timeline-nav-item" data-year="2010">2010</div>
                 </div>
 
-                <!-- 2020 -->
-                <div class="timeline-item">
-                    <div class="timeline-year">2020</div>
-                    <div class="timeline-content">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=400&fit=crop"
-                            alt="Projects 2020">
-                        <h3>Digital Transformation</h3>
-                        <p>Embraced cutting-edge technology with BIM implementation and project management systems,
-                            enhancing efficiency and client communication across all projects.</p>
+                <!-- Scrollable Content -->
+                <div class="timeline-content-scroll">
+                    <!-- 2025 Projects -->
+                    <div class="timeline-year-section" data-year="2025">
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=400&fit=crop"
+                                alt="Sustainable Initiative 2025">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2025</span>
+                                <h3>Sustainable Construction Initiative</h3>
+                                <p>Launched our groundbreaking sustainable construction initiative, implementing
+                                    eco-friendly practices and green building technologies across all new projects.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=400&fit=crop"
+                                alt="Expansion 2025">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2025</span>
+                                <h3>Multi-City Expansion</h3>
+                                <p>Expanded operations to three new cities, opening regional offices and establishing
+                                    strong local partnerships to better serve our growing client base.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- 2015 -->
-                <div class="timeline-item">
-                    <div class="timeline-year">2015</div>
-                    <div class="timeline-content">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=400&fit=crop"
-                            alt="Projects 2015">
-                        <h3>Major Milestone</h3>
-                        <p>Completed our landmark commercial complex project, establishing our reputation for delivering
-                            large-scale developments with precision and excellence.</p>
+                    <!-- 2020 Projects -->
+                    <div class="timeline-year-section" data-year="2020">
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop"
+                                alt="Digital BIM 2020">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2020</span>
+                                <h3>BIM Technology Integration</h3>
+                                <p>Implemented Building Information Modeling (BIM) across all projects, revolutionizing
+                                    our design and construction processes with 3D modeling and clash detection.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=400&fit=crop"
+                                alt="Project Management 2020">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2020</span>
+                                <h3>Advanced Project Management</h3>
+                                <p>Deployed state-of-the-art project management systems, enhancing real-time
+                                    collaboration, tracking, and communication with clients and stakeholders.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- 2010 -->
-                <div class="timeline-item">
-                    <div class="timeline-year">2010</div>
-                    <div class="timeline-content">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=400&fit=crop"
-                            alt="Projects 2010">
-                        <h3>The Beginning</h3>
-                        <p>Founded Mahendra Constructions with a vision to revolutionize the construction industry
-                            through quality, integrity, and customer-first approach.</p>
+                    <!-- 2015 Projects -->
+                    <div class="timeline-year-section" data-year="2015">
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=400&fit=crop"
+                                alt="Commercial Complex 2015">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2015</span>
+                                <h3>Landmark Commercial Complex</h3>
+                                <p>Completed our flagship 500,000 sq ft commercial complex, featuring innovative design,
+                                    smart building systems, and LEED certification.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=400&fit=crop"
+                                alt="Industry Recognition 2015">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2015</span>
+                                <h3>Industry Excellence Awards</h3>
+                                <p>Received multiple industry awards for construction excellence, safety standards, and
+                                    innovative project delivery methods.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2010 Projects -->
+                    <div class="timeline-year-section" data-year="2010">
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=400&fit=crop"
+                                alt="Foundation 2010">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2010</span>
+                                <h3>Company Founded</h3>
+                                <p>Mahendra Constructions was established with a vision to revolutionize the
+                                    construction industry through quality craftsmanship and customer-first values.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-card">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop"
+                                alt="First Projects 2010">
+                            <div class="timeline-card-content">
+                                <span class="timeline-year-label">2010</span>
+                                <h3>First Major Projects</h3>
+                                <p>Successfully completed our first residential and commercial projects, laying the
+                                    foundation for our reputation in quality construction and timely delivery.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

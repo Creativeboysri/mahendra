@@ -262,3 +262,100 @@ if ('IntersectionObserver' in window) {
 }
 
 console.log('🏗️ Stevenson Construction Website Loaded Successfully!');
+
+// ==========================================
+// STICKY TIMELINE SCROLL INTERACTION
+// ==========================================
+function initStickyTimeline() {
+    const timelineNavItems = document.querySelectorAll('.timeline-nav-item');
+    const timelineYearSections = document.querySelectorAll('.timeline-year-section');
+    
+    // Only proceed if elements exist
+    if (timelineNavItems.length === 0 || timelineYearSections.length === 0) {
+        return; 
+    }
+
+    // Function to calculate position relative to document
+    function getOffsetTop(element) {
+        let offsetTop = 0;
+        while(element) {
+            offsetTop += element.offsetTop;
+            element = element.offsetParent;
+        }
+        return offsetTop;
+    }
+
+    // Scroll detection to highlight active year
+    function updateActiveYear() {
+        // Use a trigger point slightly down the viewport (e.g., 30% down)
+        const triggerPoint = window.scrollY + (window.innerHeight * 0.3);
+
+        timelineYearSections.forEach((section, index) => {
+            const sectionTop = getOffsetTop(section);
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            // Check if the trigger point is within the section
+            // Also activating the last section if scrolled to bottom
+            const isLastSection = index === timelineYearSections.length - 1;
+            const scrolledToBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50;
+
+            if ((triggerPoint >= sectionTop && triggerPoint < sectionBottom) || (isLastSection && scrolledToBottom)) {
+                
+                // Remove active class from all nav items
+                timelineNavItems.forEach(item => item.classList.remove('active'));
+                
+                // Add active class to corresponding nav item
+                // Use data-year attribute to match if index might not align (though here it should)
+                const year = section.getAttribute('data-year');
+                const navItem = document.querySelector(`.timeline-nav-item[data-year="${year}"]`);
+                
+                if (navItem) {
+                    navItem.classList.add('active');
+                }
+            }
+        });
+    }
+
+    // Click navigation to year section
+    timelineNavItems.forEach((navItem) => {
+        navItem.addEventListener('click', () => {
+            const year = navItem.getAttribute('data-year');
+            const targetSection = document.querySelector(`.timeline-year-section[data-year="${year}"]`);
+            
+            if (targetSection) {
+                // Determine offset (header height + extra padding)
+                const header = document.querySelector('.header');
+                const headerHeight = header ? header.offsetHeight : 80;
+                const offset = 100; // Extra padding for visual breathing room
+                
+                const targetPosition = getOffsetTop(targetSection) - headerHeight - offset;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Update on scroll with throttle for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(() => {
+                updateActiveYear();
+                scrollTimeout = null;
+            }, 20); // 20ms debounce
+        }
+    });
+
+    // Initial check
+    setTimeout(updateActiveYear, 100);
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStickyTimeline);
+} else {
+    initStickyTimeline();
+}
