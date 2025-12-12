@@ -1586,3 +1586,34 @@ p {
         grid-template-columns: 1fr;
     }
 }
+
+.year-tab {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.year-tab.active {
+  background: #0b74de; /* example highlight color */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+}
+/* Service List Styles */
+.service-list {
+    font-size: 15px;
+    color: var(--medium-gray);
+    line-height: 1.7;
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.service-list li {
+    margin-bottom: 8px;
+    padding-left: 5px;
+}

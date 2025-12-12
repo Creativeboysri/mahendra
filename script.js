@@ -359,3 +359,84 @@ if (document.readyState === 'loading') {
 } else {
     initStickyTimeline();
 }
+
+// Year tabs <-> sections sync
+(function () {
+  const tabs = Array.from(document.querySelectorAll('.year-tab'));
+  const sections = Array.from(document.querySelectorAll('.year-section'));
+
+  if (!tabs.length || !sections.length) return;
+
+  // Find the scroll root: the scrolling container that holds the sections,
+  // or fallback to window (viewport).
+  const possibleRoots = ['.right-panel', '.right', '.content', '.main-content'];
+  let rootEl = null;
+  for (const sel of possibleRoots) {
+    const el = document.querySelector(sel);
+    if (el) { rootEl = el; break; }
+  }
+  const observerRoot = rootEl || null;
+
+  // Map section id -> tab element
+  const idToTab = {};
+  tabs.forEach(tab => {
+    const target = tab.dataset.target;
+    if (target) idToTab[target] = tab;
+    // make keyboard accessible
+    tab.setAttribute('role', 'button');
+    tab.setAttribute('tabindex', '0');
+  });
+
+  function setActiveId(id) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.target === id));
+  }
+
+  // IntersectionObserver picks the most visible section
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (visible) {
+      setActiveId(visible.target.id);
+    }
+  }, {
+    root: observerRoot,
+    rootMargin: '0px 0px -40% 0px', // shift activation a bit upward (tweak as needed)
+    threshold: [0, 0.25, 0.5, 0.75, 1]
+  });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Click and keyboard handlers to scroll to section
+  tabs.forEach(tab => {
+    function goto(e) {
+      const id = tab.dataset.target;
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      // Use scrollIntoView — it works for both window and scrollable containers
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveId(id);
+    }
+
+    tab.addEventListener('click', goto);
+    tab.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        goto();
+      }
+    });
+  });
+
+  // Optional: on page load, set active based on which section is visible
+  // (helps when loading mid-page or with anchor links)
+  window.requestAnimationFrame(() => {
+    const initial = sections
+      .map(s => ({ s, rect: (observerRoot || document).querySelector ? s.getBoundingClientRect() : s.getBoundingClientRect() }))
+      .sort((a, b) => (b.rect.top) - (a.rect.top))[0];
+    if (initial && initial.s && idToTab[initial.s.id]) {
+      setActiveId(initial.s.id);
+    }
+  });
+})();
