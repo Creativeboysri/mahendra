@@ -36,9 +36,32 @@ html {
 
 body {
     font-family: var(--font-body);
-    color: var(--secondary-color);
+    font-size: 16px;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
     overflow-x: hidden;
+    position: relative;
+    /* Needed for absolute positioning of pseudo-element */
+}
+
+/* Watermark Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('src/images/tower-2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.2;
+    /* Adjust this value for watermark intensity (0.05 to 0.1 is usually good) */
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -297,7 +320,7 @@ p {
    ========================================== */
 .services-section {
     padding: var(--section-padding);
-    background-color: var(--light-gray);
+    /* background-color: var(--light-gray); */
 }
 
 .services-grid {
@@ -357,7 +380,7 @@ p {
    ========================================== */
 .experience-section {
     padding: var(--section-padding);
-    background-color: var(--white);
+    /* background-color: var(--white); */
 }
 
 .experience-container {
@@ -577,7 +600,7 @@ p {
    ========================================== */
 .projects-section {
     padding: var(--section-padding);
-    background-color: var(--light-gray);
+    /* background-color: var(--light-gray); */
 }
 
 .projects-grid {
@@ -653,7 +676,7 @@ p {
    ========================================== */
 .why-choose-section {
     padding: var(--section-padding);
-    background-color: var(--light-gray);
+    /* background-color: var(--light-gray); */
 }
 
 .why-choose-grid {
@@ -1588,21 +1611,23 @@ p {
 }
 
 .year-tab {
-  display: block;
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  text-align: left;
-  border: none;
-  background: transparent;
-  cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .year-tab.active {
-  background: #0b74de; /* example highlight color */
-  color: #fff;
-  font-weight: 600;
-  border-radius: 6px;
+    background: #0b74de;
+    /* example highlight color */
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
 }
+
 /* Service List Styles */
 .service-list {
     font-size: 15px;
