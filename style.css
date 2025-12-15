@@ -2105,3 +2105,240 @@ p {
         padding: 40px;
     }
 }
+
+/* ==========================================
+   NEW INTRO SECTION (OVERLAP LAYOUT)
+   ========================================== */
+.intro-new-section {
+    /* padding: 100px 0;
+    overflow: hidden; */
+    padding: var(--section-padding);
+    background-color: var(--light-gray);
+    /* Prevent spill */
+}
+
+.intro-new-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.intro-new-image {
+    width: 50%;
+    z-index: 2;
+    /* Image on top? Screenshot shows Image on top of white, but next to orange. Overlap usually implies one covers other. */
+    /* Based on typical "Dreamland" style: Image Left, Orange Box Right. Orange Box acts as background for text. */
+    flex-shrink: 0;
+    margin-right: 64px;
+}
+
+.intro-new-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.intro-new-content {
+    background-color: var(--primary-color);
+    padding: 80px 80px 80px 100px;
+    /* Extra left padding for visual balance if overlapped */
+    width: 60%;
+    /* Wider to create overlap */
+    margin-left: -10%;
+    /* Pull content box left under image, OR pull it left to be overlapped BY image. */
+    /* Let's Try: Image floats LEFT. Content Box floats RIGHT but pulls left. */
+    /* If Image is Z-Index 2, it covers content. If Content is Z-Index 2, it covers image. */
+    /* Screenshot: Image seems independent. Content box is large orange block. */
+    /* Let's go with Image overlapping the Content Box. */
+    z-index: 1;
+    color: var(--white);
+    position: relative;
+    /* Adjusting to match simple blocky style if typically requested. */
+}
+
+/* Specific styling for orange box content */
+.intro-divider {
+    width: 50px;
+    height: 2px;
+    background-color: var(--dark-gray);
+    /* Or subtle dark line */
+    margin-bottom: 20px;
+    border: none;
+    opacity: 0.5;
+}
+
+.intro-heading {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    /* Black/Dark text on Orange? Or White? Standard is often Black on Orange or White. Let's use Black (Secondary) as per high contrast request typically, or White. Screenshot text looked dark? "Introduction Dreamland" usually black. layout. */
+    /* Wait, checking style.css, primary is Orange. Secondary is Black. */
+    /* User said "Introduction Dreamland Contractor". Usually that's dark text on orange? Let's assume dark for now or check contrast. Orange #F47200 is bright. Black is safe. White is also good. */
+    /* Let's set to var(--secondary-color) which is black. */
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.intro-text {
+    color: #333;
+    /* Dark gray for readability on orange */
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.intro-new-content .btn-dark {
+    background-color: #222;
+    color: #fff;
+    border: none;
+}
+
+.intro-new-content .btn-dark:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .intro-new-wrapper {
+        flex-direction: column;
+    }
+
+    .intro-new-image {
+        width: 100%;
+        margin-bottom: 0;
+        z-index: 1;
+    }
+
+    .intro-new-content {
+        width: 100%;
+        margin-left: 0;
+        margin-top: -50px;
+        /* Slight overlap upwards */
+        padding: 60px 40px;
+        z-index: 2;
+    }
+}
+/* ==========================================
+   SERVICE LIST STYLES
+   ========================================== */
+.service-list-sm {
+    list-style: none;
+    margin-top: 16px;
+    padding-left: 0;
+}
+
+.service-list-sm li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: var(--medium-gray);
+    line-height: 1.6;
+}
+
+.service-list-sm li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   TESTIMONIAL CAROUSEL STYLES
+   ========================================== */
+.testimonial-carousel {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial-slides-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px; /* Adjust based on content height to prevent jumping */
+}
+
+/* Modify existing split content to work as slide */
+.testimonial-split-content.testimonial-slide {
+    display: none; /* Hidden by default */
+    animation: fadeEffect 0.5s;
+    width: 100%;
+}
+
+.testimonial-split-content.testimonial-slide.active {
+    display: flex; /* Show when active */
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+/* Nav Buttons */
+.testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: var(--white);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.testimonial-nav:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -25px; /* Pull out slightly */
+}
+
+.next-btn {
+    right: -25px; /* Pull out slightly */
+}
+
+@media (max-width: 768px) {
+    .testimonial-nav {
+        width: 40px;
+        height: 40px;
+        top: auto;
+        bottom: -60px; /* Move below on mobile */
+        transform: none;
+    }
+    
+    .testimonial-nav:hover {
+        transform: scale(1.1);
+    }
+    
+    .prev-btn {
+        left: 30%;
+    }
+    
+    .next-btn {
+        right: 30%;
+    }
+    
+    .testimonial-slides-container {
+        min-height: auto; /* Let it grow */
+    }
+    
+    .testimonial-carousel {
+        margin-bottom: 60px; /* Space for buttons */
+    }
+}

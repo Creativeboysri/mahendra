@@ -440,3 +440,45 @@ if (document.readyState === 'loading') {
     }
   });
 })();
+
+/* ==========================================
+   TESTIMONIAL CAROUSEL LOGIC
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (slides.length > 0 && prevBtn && nextBtn) {
+        let currentSlide = 0;
+
+        // Function to show specific slide
+        const showSlide = (index) => {
+            // Remove active class from all
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Should be circular
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            // Show current
+            slides[currentSlide].classList.add('active');
+        };
+
+        // Event Listeners
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        // Auto-play (optional, maybe nice?) - Let's stick to manual for now as per request
+    }
+});
