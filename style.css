@@ -2342,3 +2342,319 @@ p {
         margin-bottom: 60px; /* Space for buttons */
     }
 }
+
+/* ==========================================
+   WORK EXPERIENCE SECTIONS
+   ========================================== */
+.experience-intro-text {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--medium-gray);
+}
+
+.experience-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.experience-item {
+    background-color: var(--white);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+
+.experience-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+    line-height: 1.4;
+}
+
+.experience-desc {
+    font-size: 15px;
+    color: var(--medium-gray);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.details-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.project-list li {
+    font-size: 15px;
+    color: var(--medium-gray);
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.project-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.scope-text {
+    font-size: 14px;
+    color: var(--dark-gray);
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* Summary Box */
+.experience-summary {
+    max-width: 800px;
+    margin: 60px auto 0;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.summary-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--dark-gray);
+    text-align: center;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.summary-list li {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .experience-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .experience-item {
+        padding: 20px;
+    }
+    
+    .summary-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   ABOUT PAGE OVERHAUL STYLES
+   ========================================== */
+
+/* Overview Section */
+.about-overview-section {
+    padding: var(--section-padding);
+    background-color: var(--white);
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.subtitle-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.divider-line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 20px 0 30px;
+}
+
+.leadership-block {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    margin-top: 30px;
+}
+
+.key-info-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.key-info-list li {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: var(--dark-gray);
+}
+
+.overview-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Vision & Mission Cards */
+.vision-mission-section {
+    padding: 80px 0;
+    background-color: #f4f4f4;
+}
+
+.vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.vm-card {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.vm-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.vm-card h3 {
+    font-size: 28px;
+    margin: 20px 0;
+    color: var(--dark-gray);
+}
+
+.vm-icon {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.vm-list {
+    list-style: none;
+    padding: 0;
+}
+
+.vm-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--medium-gray);
+}
+
+.vm-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Why Choose Us Cards */
+.why-choose-section {
+    padding: var(--section-padding);
+    background-color: var(--white);
+}
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.feature-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.feature-card h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--medium-gray);
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .vm-grid {
+        grid-template-columns: 1fr;
+    }
+}
